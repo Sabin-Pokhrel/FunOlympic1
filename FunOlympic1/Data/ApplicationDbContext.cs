@@ -12,5 +12,8 @@ namespace FunOlympic1.Data
 
         }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Video> Videos { get; set; }
+
     }
 }

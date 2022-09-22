@@ -1,0 +1,60 @@
+﻿@page
+@model FunOlympic1.Pages.Videos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Video</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Video.VideoID" />
+            <div class="form-group">
+                <label asp-for="Video.VideoTitle" class="control-label"></label>
+                <input asp-for="Video.VideoTitle" class="form-control" />
+                <span asp-validation-for="Video.VideoTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video.VideoLink" class="control-label"></label>
+                <input asp-for="Video.VideoLink" class="form-control" />
+                <span asp-validation-for="Video.VideoLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video.ThumbnailLink" class="control-label"></label>
+                <input asp-for="Video.ThumbnailLink" class="form-control" />
+                <span asp-validation-for="Video.ThumbnailLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video.Category" class="control-label"></label>
+                <input asp-for="Video.Category" class="form-control" />
+                <span asp-validation-for="Video.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video.PublishDate" class="control-label"></label>
+                <input asp-for="Video.PublishDate" class="form-control" />
+                <span asp-validation-for="Video.PublishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video.VideoDescription" class="control-label"></label>
+                <input asp-for="Video.VideoDescription" class="form-control" />
+                <span asp-validation-for="Video.VideoDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

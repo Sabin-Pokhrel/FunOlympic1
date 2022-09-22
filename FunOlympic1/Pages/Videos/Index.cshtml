@@ -1,0 +1,67 @@
+﻿@page
+@model FunOlympic1.Pages.Videos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Add New Video in FunOlympic</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].VideoTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].VideoLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].ThumbnailLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].VideoDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Video) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThumbnailLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoDescription)
+            </td>
+            <td>
+                <a class="btn btn-primary"  asp-page="./Edit" asp-route-id="@item.VideoID">Edit</a> 
+
+                <a class="btn btn-warning" asp-page="./Details" asp-route-id="@item.VideoID">Details</a> 
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.VideoID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
