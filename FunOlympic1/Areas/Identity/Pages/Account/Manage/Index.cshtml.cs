@@ -58,18 +58,23 @@ namespace FunOlympic1.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            //public string? Name { get; set; }
+            //public string? Country { get; set; }
+
         }
 
         private async Task LoadAsync(IdentityUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
+            //var name = await _userManager.GetUserNameAsync(user);
+            //var country = await _userManager.GetPhoneNumberAsync(user);
             Username = userName;
 
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber
+
             };
         }
 
