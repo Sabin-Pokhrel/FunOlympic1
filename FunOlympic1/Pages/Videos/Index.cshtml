@@ -56,10 +56,10 @@
                 @Html.DisplayFor(modelItem => item.VideoDescription)
             </td>
             <td>
-                <a class="btn btn-primary"  asp-page="./Edit" asp-route-id="@item.VideoID">Edit</a> 
+                <a class="btn btn-primary mb-2"  asp-page="./Edit" asp-route-id="@item.VideoID">Edit</a> 
 
-                <a class="btn btn-warning" asp-page="./Details" asp-route-id="@item.VideoID">Details</a> 
-                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.VideoID">Delete</a>
+                <a class="btn btn-warning mb-2" asp-page="./Details" asp-route-id="@item.VideoID">Details</a> 
+                <a class="btn btn-danger py-2" asp-page="./Delete" asp-route-id="@item.VideoID">Delete</a>
             </td>
         </tr>
 }

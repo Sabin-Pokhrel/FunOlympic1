@@ -7,6 +7,7 @@ namespace FunOlympic1.Pages
     {
         public void OnGet()
         {
+
         }
     }
 }
