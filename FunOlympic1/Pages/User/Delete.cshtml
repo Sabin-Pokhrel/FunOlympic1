@@ -1,5 +1,5 @@
 ﻿@page
-@model FunOlympic1.Pages.Videos.DeleteModel
+@model FunOlympic1.Pages.User.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -13,45 +13,28 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Video.VideoTitle)
+            @Html.DisplayNameFor(model => model.Video.UserName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video.VideoTitle)
+            @Html.DisplayFor(model => model.Video.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Video.VideoLink)
+            @Html.DisplayNameFor(model => model.Video.Email)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video.VideoLink)
+            @Html.DisplayFor(model => model.Video.EmailConfirmed)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Video.ThumbnailLink)
+            @Html.DisplayNameFor(model => model.Video.Country)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video.ThumbnailLink)
+            @Html.DisplayFor(model => model.Video.PhoneNumber)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Video.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video.Category)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Video.PublishDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video.PublishDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Video.VideoDescription)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video.VideoDescription)
-        </dd>
+
     </dl>
     
     <form method="post">
-        <input type="hidden" asp-for="Video.VideoID" />
+        <input type="hidden" asp-for="Video.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="./Index">Back to List</a>
     </form>
