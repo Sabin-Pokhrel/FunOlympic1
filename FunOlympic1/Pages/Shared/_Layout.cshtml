@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@inject SignInManager<IdentityUser> signInManager;
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,16 +28,20 @@
                         </li>
 
                     </ul>
+                    @if(signInManager.IsSignedIn(User)&& User.IsInRole("Admin")) 
+                    {
                     <div class="dropdown">
-    <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown">
-      Admin Panel
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" asp-page="/Videos/Index">Video Upload</a></li>
-      <li><a class="dropdown-item" asp-page="/Users/Index">User Page</a></li>
-      <li><a class="dropdown-item" href="#">Link 3</a></li>
-    </ul>
-  </div>
+                        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown">
+                          Admin Panel
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" asp-page="/Videos/Index">Video Upload</a></li>
+                          <li><a class="dropdown-item" asp-page="/Users/Index">User Page</a></li>
+                          <li><a class="dropdown-item" href="#">Link 3</a></li>
+                        </ul>
+                      </div>
+                    }
                     <partial name="_LoginPartial" />
                 </div>
             </div>
