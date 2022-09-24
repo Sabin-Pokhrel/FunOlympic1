@@ -22,7 +22,7 @@ namespace FunOlympic1.Pages.Users
         }
         [ValidateNever]
         public IEnumerable<SelectListItem> RoleList { get; set; }
-        public IActionResult OnGetAsync()
+        public IActionResult OnGet()
         {
 
 

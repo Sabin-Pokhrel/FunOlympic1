@@ -8,7 +8,7 @@
 <h1>Add New Users in FunOlympic</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Register">Create New Admin</a>
 </p>
 <table class="table">
     <thead>
@@ -61,11 +61,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
+
+
             <td>
                 <a class="btn btn-primary mb-2"  asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
 
                 <a class="btn btn-warning mb-2" asp-page="./Details" asp-route-id="@item.Id">Details</a> 
                 <a class="btn btn-danger py-2" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-danger mt-2" asp-area="Identity" asp-page="/Account/ForgotPassword" asp-route-id="@item.Id">Reset Password</a>
             </td>
         </tr>
 }

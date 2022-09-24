@@ -8,16 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FunOlympic1;
 using FunOlympic1.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace FunOlympic1.Pages.User
 {
     public class EditModel : PageModel
     {
         private readonly FunOlympic1.Data.ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser>_userManager;
 
-        public EditModel(FunOlympic1.Data.ApplicationDbContext context)
+        public EditModel(FunOlympic1.Data.ApplicationDbContext context ,UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -48,11 +51,21 @@ namespace FunOlympic1.Pages.User
                 return Page();
             }
 
-            _context.Attach(Video).State = EntityState.Modified;
-
+            //_context.Attach(Video).State = EntityState.Modified;
+            ApplicationUser user = await _context.ApplicationUsers.FindAsync(Video.Id);
+            user.Email = Video.Email;   
+            user.PhoneNumber= Video.PhoneNumber;
+            user.UserName= Video.UserName;  
+            user.Name= Video.Name;
+            user.Country   = Video.Country;
+            user.EmailConfirmed = Video.EmailConfirmed;
             try
+
             {
-                await _context.SaveChangesAsync();
+                IdentityResult result = await _userManager.UpdateAsync(user);
+                //await _context.SaveChangesAsync();
+               
+
             }
             catch (DbUpdateConcurrencyException)
             {
