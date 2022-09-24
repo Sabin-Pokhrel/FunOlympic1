@@ -94,8 +94,7 @@ namespace FunOlympic1.Areas.Identity.Pages.Account
             public string? Name { get; set; }
             public string? Country { get; set; }
             public string? PhoneNumber { get; set; }
- 
-
+            public string? Role { get; set; }
         }
 
 
@@ -132,6 +131,16 @@ namespace FunOlympic1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    if (Input.Role == null)
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.Role_User);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, Input.Role);
+
+                    }
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

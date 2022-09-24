@@ -15,7 +15,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
@@ -94,7 +96,11 @@ namespace FunOlympic1.Areas.Identity.Pages.Account
             public string? Name { get; set; }
             public string? Country { get; set; }
             public string? PhoneNumber { get; set; }
+
             public string? Role { get; set; }
+            
+            [ValidateNever]
+            public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
 
@@ -103,6 +109,15 @@ namespace FunOlympic1.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            Input = new InputModel()
+            {
+                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                {
+                    Text = i,
+                    Value = i
+                })
+            };
+
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -156,7 +171,7 @@ namespace FunOlympic1.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("Index", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else
                     {

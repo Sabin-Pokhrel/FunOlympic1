@@ -2,15 +2,15 @@
 @using FunOlympic1.Areas.Identity.Pages.Account
 @model RegisterModel1
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Admin Registration";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new Admin.</h2>
+            <h2>Create a new Admin or User.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -43,11 +43,17 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-floating mt">
+                
+                <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class=form-select>
+                    <option disabled selected>-Select Role-</option>
+                </select>
+            </div>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
-
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-2"></div>
+    <div class=" col-md-5">
         <section>
             <h3>Use another service to register.</h3>
             <hr />
