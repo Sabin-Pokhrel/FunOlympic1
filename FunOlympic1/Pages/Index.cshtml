@@ -12,10 +12,11 @@
     <h2 class="display-3">Trending</h2>
 
 </div>
+
 <div class="row pb-3">
 @foreach (var item in Model.Video)
 {
-    <div class = "col-lg-3 col-md-6 " >
+    <div class = "col-lg-3 col-md-6 mb-4" >
         <div class = "col-12 p1" style="border:1px solid #008cba; border-radius:5px;" > 
            <div class="card">
             <img src="@item.ThumbnailLink" class="card-img-top rounded " style="height:180px" />
