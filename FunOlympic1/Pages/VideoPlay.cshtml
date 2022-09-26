@@ -1,0 +1,17 @@
+﻿@page
+@model FunOlympic1.Pages.Videos.VideoPlayModel
+
+@{
+    ViewData["Title"] = "Playing Now";
+}
+
+
+
+
+<div class="embed-responsive embed-responsive-16by9">
+<iframe width="560" height="315" src="@Model.VideoLink" title="FunOlympic video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

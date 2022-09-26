@@ -1,5 +1,7 @@
 ﻿@page
 @model IndexModel
+@inject SignInManager<IdentityUser> signInManager;
+
 @{
     ViewData["Title"] = "Home page";
 }
@@ -16,17 +18,51 @@
 <div class="row pb-3">
 @foreach (var item in Model.Video)
 {
-    <div class = "col-lg-3 col-md-6 mb-4" >
-        <div class = "col-12 p1" style="border:1px solid #008cba; border-radius:5px;" > 
-           <div class="card">
-            <img src="@item.ThumbnailLink" class="card-img-top rounded " style="height:180px" />
-            <div class= "p-1" style="height:100px">
-                <p class="Card-title h5 text-primary">@item.VideoTitle</p>
-                <p class="Card-title text-secondary text-light">@item.PublishDate</p>
+        <div class = "col-lg-3 col-md-6 mb-4 ">
+
+
+            <div class = "col-12 p1" style="border:1px solid #008cba; border-radius:5px;" > 
+
+
+
+                <div class="card">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+
+                        <a class="btn"asp-page="/Videos/VideoPlay" asp-route-id="@item.VideoLink">
+                            <img src="@item.ThumbnailLink" class="card-img-top rounded " style="height:180px"  />
+                            <div class= "p-1" style="height:100px">
+                                <p class="Card-title h5 text-primary">@item.VideoTitle</p>
+                                <p class="Card-title text-secondary text-light">@item.PublishDate</p>
+                            </div>
+                            <div class="p-0">
+                                <p class="card-title text-primary fw-bold">@item.Category</p>    
+                            </div>
+                            </a>
+                            @*            <a class = "btn btn-primary" asp-page="/Privacy">Play</a>
+                            *@            
+                    }
+                    else
+                    {
+                        <a class="btn"asp-area="Identity" asp-page="/Account/Register">
+                            <img src="@item.ThumbnailLink" class="card-img-top rounded " style="height:180px"  />
+                            <div class= "p-1" style="height:100px">
+                                <p class="Card-title h5 text-primary">@item.VideoTitle</p>
+                                <p class="Card-title text-secondary text-light">@item.PublishDate</p>
+                            </div>
+                            <div class="p-0">
+                                <p class="card-title text-primary fw-bold">@item.Category</p>    
+                            </div>
+                            </a>
+                        @*<a class="btn" asp-area="Identity" asp-page="/Account/Register"asp-route-id="@item.VideoLink"></a>*@
+
+                    }
+
+                    </div>
+                
             </div>
-            </div>
-        </div>
-    
+   
     </div>
+    
 }
 </div>

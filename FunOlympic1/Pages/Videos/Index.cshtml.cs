@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FunOlympic1;
 using FunOlympic1.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FunOlympic1.Pages.Videos
 {
@@ -18,7 +19,7 @@ namespace FunOlympic1.Pages.Videos
         {
             _context = context;
         }
-
+        
         public IList<Video> Video { get;set; } = default!;
 
         public async Task OnGetAsync()
