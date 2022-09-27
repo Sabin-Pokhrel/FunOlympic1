@@ -20,7 +20,7 @@ namespace FunOlympic1.Services
             using (var emailClient = new SmtpClient())
             {
                 emailClient.Connect("smtp-relay.sendinblue.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                emailClient.Authenticate("tvfunolympic@gmail.com", "tq9GDO7awsfyKQVZ");
+                emailClient.Authenticate("sabinpokhrel525@gmail.com", "BLdpc3WEMQTSVGNP");
                 emailClient.Send(emailToSend);
                 emailClient.Disconnect(true);
 

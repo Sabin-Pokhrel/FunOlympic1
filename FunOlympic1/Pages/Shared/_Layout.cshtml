@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FunOlympic1</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-@*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-*@    <link rel="stylesheet" href="~/css/new.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/new.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FunOlympic1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+
+
 </head>
 <body>
+
     <header>
-
-
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">FunOlympic.TV</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/css/logo44.jpg" width="70" height="50" alt="">
+                     <b>    FunOlympic.TV </b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,39 +28,74 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                          
+                           <a class="nav-link text-dark" asp-area="" asp-page="/Index">
+                               <i class="bi bi-house-fill"></i>
+                               <b> Home </b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy"><b> News </b></a>
+                        </li>
+                        <li class="nav-item justify-content-center ">
+                            <a class="nav-link    text-danger " style="font-size:px" asp-area="" asp-page="/LiveVideo">
+                                <i class="bi bi-broadcast"></i>
+                                <b> Live Games </b> </a>
                         </li>
 
                     </ul>
                     @if(signInManager.IsSignedIn(User)&& User.IsInRole("Admin")) 
                     {
                     <div class="dropdown">
-                        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown">
+                        <button type="button" class="btn btn-secondary  dropdown-toggle btn-outline-secondary" data-bs-toggle="dropdown" style="color:black">
                           Admin Panel
                         </button>
 
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" asp-page="/Videos/Index">Video Upload</a></li>
                           <li><a class="dropdown-item" asp-page="/Users/Index">User Page</a></li>
-                          <li><a class="dropdown-item" href="#">Link 3</a></li>
+                          
                         </ul>
                       </div>
                     }
-                    <partial name="_LoginPartial" />
+
+
+                       <b><partial name="_LoginPartial" /></b>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    
+
+
+
+
+
+
+
+                 
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+
+
   <footer class="bg-dark text-center text-white">
+     @* <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>*@
   <!-- Grid container -->
   <div class="container p-4 pb-0">
     <!-- Section: Social media -->
@@ -76,6 +114,9 @@
 
 
     </section>
+  
+   
+
     <!-- Section: Social media -->
   </div>
   <!-- Grid container -->
@@ -84,8 +125,10 @@
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     ©FunOlympic 2022: Faster, Higher, Stronger
     
+
   </div>
   <!-- Copyright -->
+
 </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -93,6 +136,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FunOlympic1;
 using FunOlympic1.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FunOlympic1.Pages.User
 {
+    [Authorize(Roles =SD.Role_Admin)]
     public class IndexModel : PageModel
     {
         private readonly FunOlympic1.Data.ApplicationDbContext _context;

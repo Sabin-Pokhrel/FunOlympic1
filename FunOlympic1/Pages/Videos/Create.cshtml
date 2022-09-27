@@ -5,6 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
+<div class="container">
 <h1>Upload New Videos</h1>
 
 <h4>Fill all the Information on the following fields of the Video</h4>
@@ -53,7 +54,7 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
-
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
