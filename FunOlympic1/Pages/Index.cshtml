@@ -20,7 +20,7 @@
     <div class="carousel-item active">
       <img src="https://th.bing.com/th/id/R.ce2bd082baf0266edb7d0845ac9531a0?rik=JFqByQBUUeGG5g&pid=ImgRaw&r=0" alt="Los Angeles" class="d-block" style="height:600px; width:100%">
       <div class="carousel-caption">
-        <h3>Tokyo Olympic 2020</h3>
+        <h3>Previous Tokyo Olympic 2020</h3>
         <p>Opening ceremony at Tokyo's Olympic Stadium.</p>
       </div>
     </div>
@@ -64,7 +64,7 @@
 
                     @if (signInManager.IsSignedIn(User))
                     {
-                        <a class="btn"asp-page="/Videos/VideoPlay" asp-route-id="@item.VideoLink">
+                        <a class="btn" data-toggle="tooltip" data-placement="top" title="Play" asp-page="/Videos/VideoPlay" asp-route-id="@item.VideoLink">
                             <img src="@item.ThumbnailLink" class="card-img-top rounded " style="height:180px"  />
 
                             <div class= "p-1" style="height:100px">
